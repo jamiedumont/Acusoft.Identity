@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30002.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acusoft.IdentityClient", "Acusoft.Identity.Client\Acusoft.Identity.Client.csproj", "{C744ED94-86BB-49FD-955D-109A96A863C9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AcusoftIdentityServer", "Acusoft.Identity.Server\Acusoft.Identity.Server.csproj", "{961D1EC5-3228-41FA-BE4A-8AB34E6CF25F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C744ED94-86BB-49FD-955D-109A96A863C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C744ED94-86BB-49FD-955D-109A96A863C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C744ED94-86BB-49FD-955D-109A96A863C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C744ED94-86BB-49FD-955D-109A96A863C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{961D1EC5-3228-41FA-BE4A-8AB34E6CF25F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{961D1EC5-3228-41FA-BE4A-8AB34E6CF25F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{961D1EC5-3228-41FA-BE4A-8AB34E6CF25F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{961D1EC5-3228-41FA-BE4A-8AB34E6CF25F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2D18C308-451A-4EE4-B425-DCCAED978B7B}
+	EndGlobalSection
+EndGlobal

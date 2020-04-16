@@ -1,0 +1,97 @@
+syntax = "proto3";
+option csharp_namespace = "Acusoft.Identity.Protos";
+
+
+service Users {
+	rpc FindById (FindByIdLookup) returns (UserQueryResponse);
+	rpc FindByNormalizedName (FindByNormalizedNameLookup) returns (UserQueryResponse);
+	rpc FindByNormalizedEmail (FindByNormalizedEmailLookup) returns (UserQueryResponse);
+	rpc CreateUser (IdentityUser) returns (DatabaseOperation);
+	rpc UpdateUser (IdentityUser) returns (DatabaseOperation);
+	rpc DeleteUser (IdentityUser) returns (DatabaseOperation);
+}
+
+
+
+message DatabaseOperation {
+	Status Status = 1;
+	Error Error = 2;
+}
+
+enum Status {
+	UNKNOWN = 0;
+	SUCCEEDED = 1;
+	FAILED = 2;
+}
+
+
+message UserQueryResponse {
+	bool Any = 1;
+	Error Error = 2;
+	repeated IdentityUser Users = 3;
+}
+
+message Error {
+	string Description = 1;
+}
+
+message IdentityUser {
+	string Id = 1;
+
+	string UserName = 2;
+	string NormalizedUserName = 3;
+	string NormalizedEmail = 4;
+
+	string Email = 5;
+	string EmailConfirmationTime = 6;
+
+	string PasswordHash = 7;
+	bool TwoFactorEnabled = 8;
+	string SecurityStamp = 9;
+	int32 AccessFailedCount = 10;
+
+	LockoutInfo Lockout = 11;
+	PhoneInfo Phone = 12;
+
+	repeated LoginInfo Logins = 13;
+	repeated TokenInfo Tokens = 14;
+
+	repeated string Roles = 15;
+}
+
+message IdentityRole {
+	string Id = 1;
+	string Name = 2;
+	string NormalizedName = 3;
+}
+
+message LockoutInfo {
+	string Placeholder = 1;
+}
+
+message PhoneInfo {
+	string Placeholder = 1;
+}
+
+message LoginInfo {
+	string LoginProvider = 1;
+	string ProviderKey = 2;
+	string ProviderDisplayName = 3;
+}
+
+message TokenInfo {
+	string Placeholder = 1;
+}
+
+message FindByIdLookup {
+	string Id = 1;
+}
+
+message FindByNormalizedNameLookup {
+	string NormalizedUserName = 1;
+}
+
+message FindByNormalizedEmailLookup {
+	string NormalizedEmail = 1;
+}
+
