@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 namespace Acusoft.Identity.Client.Models
 {
-    public class IdentityRole
+    public class AcuRole
     {
         public Guid Id { get; internal set; }
 
         public string Name { get; set; }
         public string NormalizedName { get; set; }
 
-        public IdentityRole()
+        public AcuRole()
         { }
 
-        public IdentityRole(Guid id) : this()
+        public AcuRole(Guid id) : this()
         {
             Id = id;
         }

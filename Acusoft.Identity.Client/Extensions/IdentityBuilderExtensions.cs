@@ -15,15 +15,14 @@ namespace Acusoft.Identity.Client.Extensions
         {
 
         }
-        public static IdentityBuilder UseGrpcStores<TSession>(this IdentityBuilder builder)
-            where TSession : Users.UsersClient
+        public static IdentityBuilder UseGrpcStores(this IdentityBuilder builder)
            => builder
-               .AddGrpcUserStore<TSession>()
-               .AddGrpcRoleStore<TSession>();
+               .AddGrpcUserStore()
+               .AddGrpcRoleStore();
 
-        private static IdentityBuilder AddGrpcUserStore<TSession>(this IdentityBuilder builder)
+        private static IdentityBuilder AddGrpcUserStore(this IdentityBuilder builder)
         {
-            var userStoreType = typeof(UserStore<,>).MakeGenericType(builder.UserType, typeof(TSession));
+            var userStoreType = typeof(UserStore<>).MakeGenericType(builder.UserType);
 
             builder.Services.AddScoped(
                 typeof(IUserStore<>).MakeGenericType(builder.UserType),
@@ -33,9 +32,9 @@ namespace Acusoft.Identity.Client.Extensions
             return builder;
         }
 
-        private static IdentityBuilder AddGrpcRoleStore<TSession>(this IdentityBuilder builder)
+        private static IdentityBuilder AddGrpcRoleStore(this IdentityBuilder builder)
         {
-            var roleStoreType = typeof(RoleStore<,>).MakeGenericType(builder.RoleType, typeof(TSession));
+            var roleStoreType = typeof(RoleStore<>).MakeGenericType(builder.RoleType);
 
             builder.Services.AddScoped(
                 typeof(IRoleStore<>).MakeGenericType(builder.RoleType),

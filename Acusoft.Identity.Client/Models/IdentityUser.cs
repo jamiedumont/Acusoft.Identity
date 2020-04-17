@@ -5,7 +5,7 @@ using Acusoft.Identity.Protos;
 
 namespace Acusoft.Identity.Client.Models
 {
-    public class IdentityUser
+    public class AcuUser
     {
         #region | Fields
 
@@ -78,20 +78,20 @@ namespace Acusoft.Identity.Client.Models
 
         #region | Constructors
 
-        public IdentityUser()
+        public AcuUser()
         {
             _logins = new List<LoginInfo>();
             _tokens = new List<TokenInfo>();
             _roles = new List<string>();
         }
 
-        public IdentityUser(Guid id)
+        public AcuUser(Guid id)
             : this()
         {
             Id = id;
         }
 
-        public IdentityUser(Protos.IdentityUser user)
+        public AcuUser(Protos.IdentityUser user)
         {
             Id = Guid.Parse(user.Id);
         }

@@ -13,10 +13,9 @@ using Acusoft.Identity.Protos;
 
 namespace Acusoft.Identity.Client
 {
-    class RoleStore<TRole, TSession> :
-        IQueryableRoleStore<TRole>
-        where TRole : Models.IdentityRole
-        where TSession : Users.UsersClient
+    public class RoleStore<TRole> :
+        IRoleStore<TRole>
+        where TRole : Models.AcuRole
     {
         #region | Fields
 
@@ -32,9 +31,7 @@ namespace Acusoft.Identity.Client
 
         public IdentityErrorDescriber ErrorDescriber { get; }
         public GrpcErrorDescriber GrpcErrorDescriber { get; }
-        public TSession Session { get; }
 
-        public IQueryable<TRole> Roles => throw new NotImplementedException();
 
         private Users.UsersClient _client;
 
@@ -43,7 +40,7 @@ namespace Acusoft.Identity.Client
         #region | Constructors
 
         public RoleStore(
-            TSession session,
+            //TSession session,
             Users.UsersClient usersClient,
             ILoggerFactory loggerFactory,
             IdentityErrorDescriber errorDescriber = null,
@@ -51,9 +48,9 @@ namespace Acusoft.Identity.Client
         {
             ErrorDescriber = errorDescriber;
             GrpcErrorDescriber = grpcErrorDescriber;
-            Session = session ?? throw new ArgumentNullException(nameof(session));
+            //Session = session ?? throw new ArgumentNullException(nameof(session));
             _client = usersClient;
-            _logger = loggerFactory.CreateLogger(typeof(RoleStore<,>).GetTypeInfo().Name);
+            //_logger = loggerFactory.CreateLogger(typeof(RoleStore<,>).GetTypeInfo().Name);
         }
 
         #endregion

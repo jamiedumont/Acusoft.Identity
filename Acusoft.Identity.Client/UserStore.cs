@@ -12,7 +12,7 @@ using Acusoft.Identity.Protos;
 
 namespace Acusoft.Identity.Client
 {
-    public class UserStore<TUser, TSession> :
+    public class UserStore<TUser> :
         IUserLoginStore<TUser>,
         IUserPasswordStore<TUser>,
         IUserSecurityStampStore<TUser>,
@@ -25,8 +25,7 @@ namespace Acusoft.Identity.Client
         IUserTwoFactorRecoveryCodeStore<TUser>,
         IUserLockoutStore<TUser>,
         IUserClaimStore<TUser>
-        where TUser : Models.IdentityUser
-        where TSession : Users.UsersClient
+        where TUser : Models.AcuUser
     {
         #region | Fields
 
@@ -45,7 +44,7 @@ namespace Acusoft.Identity.Client
 
         public IdentityErrorDescriber ErrorDescriber { get; }
         public GrpcErrorDescriber GrpcErrorDescriber { get; }
-        public TSession Session { get; }
+        //public TSession Session { get; }
         private Users.UsersClient _client;
         //public IQueryable<TUser> Users => _usersTable;
 
@@ -54,15 +53,15 @@ namespace Acusoft.Identity.Client
         #region | Constructors
 
         public UserStore(
-            TSession session,
+            //TSession session,
             Users.UsersClient usersClient,
-            ILogger<UserStore<TUser, TSession>> logger,
+            ILogger<UserStore<TUser>> logger,
             IdentityErrorDescriber errorDescriber = null,
             GrpcErrorDescriber grpcErrorDescriber = null)
         {
             ErrorDescriber = errorDescriber;
             GrpcErrorDescriber = grpcErrorDescriber;
-            Session = session ?? throw new ArgumentNullException(nameof(session));
+            //Session = session ?? throw new ArgumentNullException(nameof(session));
             _client = usersClient;
             _logger = logger;
         }
